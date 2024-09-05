@@ -36,6 +36,7 @@ const ESLintConfigBuilder = () => {
   return (
     <div>
       <h1>ESLint Config Builder</h1>
+      <button onClick={generateConfig}>Generate ESLint Config</button>
       <table>
         <thead>
           <tr>
@@ -98,7 +99,6 @@ const ESLintConfigBuilder = () => {
           ))}
         </tbody>
       </table>
-      <button onClick={generateConfig}>Generate ESLint Config</button>
     </div>
   );
 };
