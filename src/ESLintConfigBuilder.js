@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-
-const initialRules = [
-  { id: 1, package: 'eslint', ruleName: 'no-console', description: 'Disallow the use of console', enabled: false, level: 'off' },
-  { id: 2, package: 'eslint', ruleName: 'eqeqeq', description: 'Require the use of === and !==', enabled: false, level: 'off' },
-  { id: 3, package: 'eslint', ruleName: 'no-unused-vars', description: 'Disallow unused variables', enabled: false, level: 'off' },
-];
+import { RULES } from './rules';
 
 const ESLintConfigBuilder = () => {
-  const [rules, setRules] = useState(initialRules);
+  const [rules, setRules] = useState(RULES);
 
   const handleEnableChange = (id) => {
     setRules(rules.map(rule => rule.id === id ? { ...rule, enabled: !rule.enabled } : rule));
