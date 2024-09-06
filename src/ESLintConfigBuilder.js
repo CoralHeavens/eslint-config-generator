@@ -14,13 +14,30 @@ const ESLintConfigBuilder = () => {
 
   const generateConfig = () => {
     const selectedRules = rules.filter(rule => rule.enabled);
-    
-    // Create the ESLint rules configuration object
+
+    // Group rules by package
+    const packageGroups = rules.reduce((acc, rule) => {
+      if (!acc[rule.package]) acc[rule.package] = [];
+      acc[rule.package].push(rule);
+      return acc;
+    }, {});
+
+    // Create the ESLint rules configuration object, including all rules from selected packages with 'off' by default
     const config = {
-      rules: selectedRules.reduce((acc, rule) => {
-        acc[`${rule.package}/${rule.ruleName}`] = rule.level;
+      rules: Object.values(packageGroups).reduce((acc, group) => {
+        // Check if any rule in this group is selected
+        const isPackageSelected = group.some(rule => rule.enabled);
+        if (!isPackageSelected) {
+          return acc;
+        }
+
+        // Add all rules in this package, set to 'off' unless enabled
+        group.forEach(rule => {
+          acc[`${rule.package}/${rule.ruleName}`] = rule.enabled ? rule.level : 'off';
+        });
+
         return acc;
-      }, {})
+      }, {}),
     };
 
     // Extract unique package names required for the selected rules
