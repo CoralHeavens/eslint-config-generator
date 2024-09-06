@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import ESLintConfigBuilder from './ESLintConfigBuilder';
 
 function App() {

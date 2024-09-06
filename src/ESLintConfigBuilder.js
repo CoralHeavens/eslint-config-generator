@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { RULES } from './rules';
+import eslintRules from './eslintRules';  // Import the extended rules list
 
 const ESLintConfigBuilder = () => {
-  const [rules, setRules] = useState(RULES);
+  const [rules, setRules] = useState(eslintRules);
 
+  // Handle checkbox change for enabling/disabling rules
   const handleEnableChange = (id) => {
     setRules(rules.map(rule => rule.id === id ? { ...rule, enabled: !rule.enabled } : rule));
   };
 
+  // Handle level change (Error, Warning, Off)
   const handleLevelChange = (id, level) => {
     setRules(rules.map(rule => rule.id === id ? { ...rule, level } : rule));
   };
 
+  // Generate ESLint config and required package installation instructions, then trigger download
   const generateConfig = () => {
     const selectedRules = rules.filter(rule => rule.enabled);
 
@@ -25,17 +28,16 @@ const ESLintConfigBuilder = () => {
     // Create the ESLint rules configuration object, including all rules from selected packages with 'off' by default
     const config = {
       rules: Object.values(packageGroups).reduce((acc, group) => {
-        // Check if any rule in this group is selected
-        const isPackageSelected = group.some(rule => rule.enabled);
-        if (!isPackageSelected) {
-          return acc;
-        }
-
         // Add all rules in this package, set to 'off' unless enabled
         group.forEach(rule => {
-          acc[`${rule.package}/${rule.ruleName}`] = rule.enabled ? rule.level : 'off';
+          if (rule.enabled) {
+            acc[`${rule.package}/${rule.ruleName}`] = rule.options 
+              ? [rule.level, ...rule.options] 
+              : rule.level;
+          } else {
+            acc[`${rule.package}/${rule.ruleName}`] = 'off';
+          }
         });
-
         return acc;
       }, {}),
     };
@@ -61,76 +63,78 @@ const ESLintConfigBuilder = () => {
   };
 
   return (
-    <div>
-      <h1>ESLint Config Builder</h1>
-      <button onClick={generateConfig}>Generate ESLint Config</button>
-      <table>
-        <thead>
-          <tr>
-            <th>Enabled</th>
-            <th>Package</th>
-            <th>Rule Name</th>
-            <th>Level</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rules.map(rule => (
-            <tr key={rule.id}>
-              <td>
-                <input
-                  type="checkbox"
-                  checked={rule.enabled}
-                  onChange={() => handleEnableChange(rule.id)}
-                />
-              </td>
-              <td>{rule.package}</td>
-              <td>{rule.ruleName}</td>
-              <td>
-                <label>
-                  <input
-                    type="radio"
-                    name={`level-${rule.id}`}
-                    value="error"
-                    checked={rule.level === 'error'}
-                    disabled={!rule.enabled}
-                    onChange={() => handleLevelChange(rule.id, 'error')}
-                  />
-                  Error
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`level-${rule.id}`}
-                    value="warning"
-                    checked={rule.level === 'warning'}
-                    disabled={!rule.enabled}
-                    onChange={() => handleLevelChange(rule.id, 'warning')}
-                  />
-                  Warning
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name={`level-${rule.id}`}
-                    value="off"
-                    checked={rule.level === 'off'}
-                    disabled={!rule.enabled}
-                    onChange={() => handleLevelChange(rule.id, 'off')}
-                  />
-                  Off
-                </label>
-              </td>
-              <td>{rule.description}</td>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 py-10">
+      <h1 className="text-3xl font-bold mb-6 text-blue-600">ESLint Config Builder</h1>
+      <button
+        onClick={generateConfig}
+        className="mb-6 px-4 py-2 bg-blue-500 text-white rounded shadow hover:bg-blue-600"
+      >
+        Generate ESLint Config
+      </button>
+      <div className="overflow-x-auto w-full max-w-4xl">
+        <table className="table-auto w-full bg-white shadow-lg rounded-lg">
+          <thead>
+            <tr className="bg-blue-500 text-white">
+              <th className="px-4 py-2 text-center">Enabled</th>
+              <th className="px-4 py-2 text-center">Package</th>
+              <th className="px-4 py-2 text-center">Rule Name</th>
+              <th className="px-4 py-2 text-center">Level</th>
+              <th className="px-4 py-2 text-center">Description</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <div
-        style={{
-          height: "40px"
-        }}
-      />
+          </thead>
+          <tbody>
+            {rules.map(rule => (
+              <tr key={rule.id} className="hover:bg-gray-100">
+                <td className="border px-4 py-2 text-center align-middle">
+                  <input
+                    type="checkbox"
+                    checked={rule.enabled}
+                    onChange={() => handleEnableChange(rule.id)}
+                  />
+                </td>
+                <td className="border px-4 py-2 text-center align-middle">{rule.package}</td>
+                <td className="border px-4 py-2 text-center align-middle">{rule.ruleName}</td>
+                <td className="border border-x-0 border-b-0 -mt-[1px] px-4 py-2 flex items-center justify-center space-x-4 align-middle">
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name={`level-${rule.id}`}
+                      value="error"
+                      checked={rule.level === 'error'}
+                      disabled={!rule.enabled}
+                      onChange={() => handleLevelChange(rule.id, 'error')}
+                    />
+                    <span className="ml-1">Error</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name={`level-${rule.id}`}
+                      value="warning"
+                      checked={rule.level === 'warning'}
+                      disabled={!rule.enabled}
+                      onChange={() => handleLevelChange(rule.id, 'warning')}
+                    />
+                    <span className="ml-1">Warning</span>
+                  </label>
+                  <label className="flex items-center">
+                    <input
+                      type="radio"
+                      name={`level-${rule.id}`}
+                      value="off"
+                      checked={rule.level === 'off'}
+                      disabled={!rule.enabled}
+                      onChange={() => handleLevelChange(rule.id, 'off')}
+                    />
+                    <span className="ml-1">Off</span>
+                  </label>
+                </td>
+                <td className="border px-4 py-2 text-center align-middle">{rule.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

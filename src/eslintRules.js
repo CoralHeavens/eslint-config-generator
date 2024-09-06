@@ -1,4 +1,4 @@
-export const RULES = [
+const eslintRules = [
     // Core ESLint Rules
     { id: 1, package: 'eslint', ruleName: 'no-unused-vars', description: 'Disallow unused variables.', enabled: false, level: 'warn' },
     { id: 2, package: 'eslint', ruleName: 'eqeqeq', description: 'Require the use of === and !== instead of == and !=.', enabled: false, level: 'error' },
@@ -7,7 +7,7 @@ export const RULES = [
     { id: 5, package: 'eslint', ruleName: 'quotes', description: 'Enforce the consistent use of single quotes.', enabled: false, level: 'warn' },
     { id: 6, package: 'eslint', ruleName: 'no-debugger', description: 'Disallow the use of debugger.', enabled: false, level: 'warn' },
     { id: 7, package: 'eslint', ruleName: 'no-alert', description: 'Disallow the use of alert, confirm, and prompt.', enabled: false, level: 'error' },
-    { id: 8, package: 'eslint', ruleName: 'no-magic-numbers', description: 'Disallow the use of magic numbers.', enabled: false, level: 'error' },
+    { id: 8, package: 'eslint', ruleName: 'no-magic-numbers', description: 'Disallow the use of magic numbers.', enabled: false, level: 'error', options: [{ ignore: [-1, 0, 1] }] },
     { id: 9, package: 'eslint', ruleName: 'camelcase', description: 'Enforce consistent naming of variables, functions, and classes.', enabled: false, level: 'error' },
     { id: 10, package: 'eslint', ruleName: 'arrow-parens', description: 'Require or disallow parentheses around arrow function arguments.', enabled: false, level: 'warn' },
     { id: 11, package: 'eslint', ruleName: 'no-extra-boolean-cast', description: 'Disallow unnecessary boolean casts.', enabled: false, level: 'warn' },
@@ -86,3 +86,5 @@ export const RULES = [
     { id: 68, package: 'eslint-plugin-jest', ruleName: 'jest/prefer-to-have-length', description: 'Suggest using toHaveLength() in Jest assertions.', enabled: false, level: 'warn' },
     { id: 69, package: 'eslint-plugin-jest', ruleName: 'jest/prefer-expect-assertions', description: 'Require assertions in Jest tests to ensure correctness.', enabled: false, level: 'warn' },
 ];
+
+export default eslintRules;
