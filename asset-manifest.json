@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/eslint-config-generator/static/css/main.05758c4f.css",
-    "main.js": "/eslint-config-generator/static/js/main.bd9faff7.js",
+    "main.css": "/eslint-config-generator/static/css/main.ca14fe53.css",
+    "main.js": "/eslint-config-generator/static/js/main.7e4a618a.js",
     "static/js/453.993b577a.chunk.js": "/eslint-config-generator/static/js/453.993b577a.chunk.js",
     "index.html": "/eslint-config-generator/index.html",
-    "main.05758c4f.css.map": "/eslint-config-generator/static/css/main.05758c4f.css.map",
-    "main.bd9faff7.js.map": "/eslint-config-generator/static/js/main.bd9faff7.js.map",
+    "main.ca14fe53.css.map": "/eslint-config-generator/static/css/main.ca14fe53.css.map",
+    "main.7e4a618a.js.map": "/eslint-config-generator/static/js/main.7e4a618a.js.map",
     "453.993b577a.chunk.js.map": "/eslint-config-generator/static/js/453.993b577a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.05758c4f.css",
-    "static/js/main.bd9faff7.js"
+    "static/css/main.ca14fe53.css",
+    "static/js/main.7e4a618a.js"
   ]
 }
