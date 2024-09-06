@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/eslint-config-generator/static/css/main.f855e6bc.css",
-    "main.js": "/eslint-config-generator/static/js/main.a2d03114.js",
+    "main.js": "/eslint-config-generator/static/js/main.f81955d8.js",
     "static/js/453.993b577a.chunk.js": "/eslint-config-generator/static/js/453.993b577a.chunk.js",
     "index.html": "/eslint-config-generator/index.html",
     "main.f855e6bc.css.map": "/eslint-config-generator/static/css/main.f855e6bc.css.map",
-    "main.a2d03114.js.map": "/eslint-config-generator/static/js/main.a2d03114.js.map",
+    "main.f81955d8.js.map": "/eslint-config-generator/static/js/main.f81955d8.js.map",
     "453.993b577a.chunk.js.map": "/eslint-config-generator/static/js/453.993b577a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f855e6bc.css",
-    "static/js/main.a2d03114.js"
+    "static/js/main.f81955d8.js"
   ]
 }
