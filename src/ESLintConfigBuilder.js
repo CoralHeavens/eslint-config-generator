@@ -13,23 +13,33 @@ const ESLintConfigBuilder = () => {
   };
 
   const generateConfig = () => {
+    const selectedRules = rules.filter(rule => rule.enabled);
+    
+    // Create the ESLint rules configuration object
     const config = {
-      rules: rules.reduce((acc, rule) => {
-        if (rule.enabled) {
-          acc[`${rule.package}/${rule.ruleName}`] = rule.level;
-        }
+      rules: selectedRules.reduce((acc, rule) => {
+        acc[`${rule.package}/${rule.ruleName}`] = rule.level;
         return acc;
       }, {})
     };
 
-    const configJSON = JSON.stringify(config, null, 2);
-    const blob = new Blob([configJSON], { type: 'application/json' });
+    // Extract unique package names required for the selected rules
+    const packages = [...new Set(selectedRules.map(rule => rule.package))];
 
+    // Create package installation instructions
+    const packageInstructions = `To install the required packages, run:\n\nnpm install --save-dev ${packages.join(' ')}`;
+
+    // Combine ESLint config and package instructions into a single text
+    const combinedContent = `${JSON.stringify(config, null, 2)}\n\n${packageInstructions}`;
+
+    // Create a Blob and trigger download
+    const blob = new Blob([combinedContent], { type: 'text/plain' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'eslint-config.json';
+    link.download = 'eslint-config-and-packages.txt';
     link.click();
 
+    // Cleanup the URL object
     URL.revokeObjectURL(link.href);
   };
 
@@ -99,6 +109,11 @@ const ESLintConfigBuilder = () => {
           ))}
         </tbody>
       </table>
+      <div
+        style={{
+          height: "40px"
+        }}
+      />
     </div>
   );
 };
