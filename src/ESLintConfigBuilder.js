@@ -90,6 +90,7 @@ const ESLintConfigBuilder = () => {
                     type="checkbox"
                     checked={rule.enabled}
                     onChange={() => handleEnableChange(rule.id)}
+                    className="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 focus:ring-0 outline-none"
                   />
                 </td>
                 <td className="border px-4 py-2 text-center align-middle">{rule.package}</td>
