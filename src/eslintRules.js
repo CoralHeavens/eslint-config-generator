@@ -85,6 +85,121 @@ const eslintRules = [
     { id: 67, package: 'eslint-plugin-jest', ruleName: 'jest/no-identical-title', description: 'Disallow identical titles in Jest test suites.', enabled: false, level: 'error' },
     { id: 68, package: 'eslint-plugin-jest', ruleName: 'jest/prefer-to-have-length', description: 'Suggest using toHaveLength() in Jest assertions.', enabled: false, level: 'warn' },
     { id: 69, package: 'eslint-plugin-jest', ruleName: 'jest/prefer-expect-assertions', description: 'Require assertions in Jest tests to ensure correctness.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-node Rules
+    { id: 70, package: 'eslint-plugin-node', ruleName: 'node/no-extraneous-import', description: 'Disallow imports of extraneous packages.', enabled: false, level: 'error' },
+    { id: 71, package: 'eslint-plugin-node', ruleName: 'node/no-missing-import', description: 'Disallow missing imports.', enabled: false, level: 'error' },
+    { id: 72, package: 'eslint-plugin-node', ruleName: 'node/no-unsupported-features/es-syntax', description: 'Disallow unsupported ECMAScript syntax.', enabled: false, level: 'error' },
+    { id: 73, package: 'eslint-plugin-node', ruleName: 'node/no-deprecated-api', description: 'Disallow the use of deprecated APIs in Node.js.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-unicorn Rules
+    { id: 74, package: 'eslint-plugin-unicorn', ruleName: 'unicorn/filename-case', description: 'Enforce a case style for filenames.', enabled: false, level: 'warn' },
+    { id: 75, package: 'eslint-plugin-unicorn', ruleName: 'unicorn/no-abusive-eslint-disable', description: 'Disallow the use of ESLint disable comments without explanations.', enabled: false, level: 'warn' },
+    { id: 76, package: 'eslint-plugin-unicorn', ruleName: 'unicorn/prefer-type-error', description: 'Enforce the use of TypeError when throwing errors for type-related issues.', enabled: false, level: 'error' },
+    { id: 77, package: 'eslint-plugin-unicorn', ruleName: 'unicorn/no-nested-ternary', description: 'Disallow nested ternary expressions.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-prettier Rules
+    { id: 78, package: 'eslint-plugin-prettier', ruleName: 'prettier/prettier', description: 'Ensure code conforms to Prettier formatting rules.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-sonarjs Rules
+    { id: 79, package: 'eslint-plugin-sonarjs', ruleName: 'sonarjs/no-duplicate-string', description: 'Disallow duplicate strings in the code.', enabled: false, level: 'warn' },
+    { id: 80, package: 'eslint-plugin-sonarjs', ruleName: 'sonarjs/cognitive-complexity', description: 'Enforce cognitive complexity limits to keep functions readable.', enabled: false, level: 'warn' },
+    { id: 81, package: 'eslint-plugin-sonarjs', ruleName: 'sonarjs/no-inverted-boolean-check', description: 'Disallow inverted boolean checks to improve code readability.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-eslint-comments Rules
+    { id: 82, package: 'eslint-plugin-eslint-comments', ruleName: 'eslint-comments/no-unused-disable', description: 'Disallow unused eslint-disable comments.', enabled: false, level: 'warn' },
+    { id: 83, package: 'eslint-plugin-eslint-comments', ruleName: 'eslint-comments/no-restricted-disable', description: 'Disallow disable of specific ESLint rules.', enabled: false, level: 'error' },
+    { id: 84, package: 'eslint-plugin-eslint-comments', ruleName: 'eslint-comments/require-description', description: 'Require descriptions in ESLint directive comments.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-yml Rules
+    { id: 85, package: 'eslint-plugin-yml', ruleName: 'yml/no-empty-document', description: 'Disallow empty YAML documents.', enabled: false, level: 'error' },
+    { id: 86, package: 'eslint-plugin-yml', ruleName: 'yml/indent', description: 'Enforce consistent indentation in YAML files.', enabled: false, level: 'warn' },
+    { id: 87, package: 'eslint-plugin-yml', ruleName: 'yml/no-empty-mapping-value', description: 'Disallow empty mapping values in YAML.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-lodash Rules
+    { id: 88, package: 'eslint-plugin-lodash', ruleName: 'lodash/prefer-lodash-method', description: 'Prefer Lodash methods over native ones where applicable.', enabled: false, level: 'warn' },
+    { id: 89, package: 'eslint-plugin-lodash', ruleName: 'lodash/prop-shorthand', description: 'Prefer property shorthand syntax in Lodash methods.', enabled: false, level: 'warn' },
+    { id: 90, package: 'eslint-plugin-lodash', ruleName: 'lodash/no-double-unwrap', description: 'Disallow double unwrapping in Lodash chains.', enabled: false, level: 'error' },
+
+    // eslint-plugin-functional Rules
+    { id: 91, package: 'eslint-plugin-functional', ruleName: 'functional/no-let', description: 'Disallow the use of let and var, encouraging the use of const.', enabled: false, level: 'warn' },
+    { id: 92, package: 'eslint-plugin-functional', ruleName: 'functional/immutable-data', description: 'Disallow mutating data structures.', enabled: false, level: 'error' },
+    { id: 93, package: 'eslint-plugin-functional', ruleName: 'functional/no-loop-statement', description: 'Disallow loop statements to promote functional programming techniques.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-deprecation Rules
+    { id: 94, package: 'eslint-plugin-deprecation', ruleName: 'deprecation/deprecation', description: 'Disallow the use of deprecated APIs.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-security-node Rules
+    { id: 95, package: 'eslint-plugin-security-node', ruleName: 'security-node/detect-possible-timing-attacks', description: 'Detect potential timing attacks in code.', enabled: false, level: 'warn' },
+    { id: 96, package: 'eslint-plugin-security-node', ruleName: 'security-node/non-literal-reg-expr', description: 'Disallow the use of non-literal regular expressions.', enabled: false, level: 'error' },
+
+    // eslint-plugin-jsonc Rules
+    { id: 97, package: 'eslint-plugin-jsonc', ruleName: 'jsonc/sort-keys', description: 'Enforce sorted keys in JSON objects.', enabled: false, level: 'warn' },
+    { id: 98, package: 'eslint-plugin-jsonc', ruleName: 'jsonc/no-dupe-keys', description: 'Disallow duplicate keys in JSON objects.', enabled: false, level: 'error' },
+    { id: 99, package: 'eslint-plugin-jsonc', ruleName: 'jsonc/no-octal', description: 'Disallow octal literals in JSON.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-react-perf Rules
+    { id: 100, package: 'eslint-plugin-react-perf', ruleName: 'react-perf/jsx-no-new-object-as-prop', description: 'Disallow new object literals as props.', enabled: false, level: 'warn' },
+    { id: 101, package: 'eslint-plugin-react-perf', ruleName: 'react-perf/jsx-no-new-function-as-prop', description: 'Disallow new function declarations as props.', enabled: false, level: 'warn' },
+    { id: 102, package: 'eslint-plugin-react-perf', ruleName: 'react-perf/jsx-no-jsx-as-prop', description: 'Disallow passing JSX as a prop.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-rxjs Rules
+    { id: 103, package: 'eslint-plugin-rxjs', ruleName: 'rxjs/no-ignored-subscription', description: 'Disallow ignoring subscriptions in RxJS.', enabled: false, level: 'warn' },
+    { id: 104, package: 'eslint-plugin-rxjs', ruleName: 'rxjs/no-async-subscribe', description: 'Disallow async functions in RxJS subscribe.', enabled: false, level: 'error' },
+    { id: 105, package: 'eslint-plugin-rxjs', ruleName: 'rxjs/no-nested-subscribe', description: 'Disallow nested subscribes in RxJS.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-you-dont-need-lodash-underscore Rules
+    { id: 106, package: 'eslint-plugin-you-dont-need-lodash-underscore', ruleName: 'you-dont-need-lodash-underscore/is-nil', description: 'Disallow Lodash _.isNil usage when JavaScript provides similar functionality.', enabled: false, level: 'warn' },
+    { id: 107, package: 'eslint-plugin-you-dont-need-lodash-underscore', ruleName: 'you-dont-need-lodash-underscore/for-each', description: 'Disallow Lodash _.forEach usage when JavaScript provides similar functionality.', enabled: false, level: 'warn' },
+    { id: 108, package: 'eslint-plugin-you-dont-need-lodash-underscore', ruleName: 'you-dont-need-lodash-underscore/get', description: 'Disallow Lodash _.get usage when JavaScript provides similar functionality.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-jest-dom Rules
+    { id: 109, package: 'eslint-plugin-jest-dom', ruleName: 'jest-dom/prefer-checked', description: 'Prefer .toBeChecked() in Jest DOM assertions.', enabled: false, level: 'warn' },
+    { id: 110, package: 'eslint-plugin-jest-dom', ruleName: 'jest-dom/prefer-required', description: 'Prefer .toBeRequired() in Jest DOM assertions.', enabled: false, level: 'warn' },
+    { id: 111, package: 'eslint-plugin-jest-dom', ruleName: 'jest-dom/prefer-enabled-disabled', description: 'Prefer .toBeEnabled() or .toBeDisabled() in Jest DOM assertions.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-testing-library Rules
+    { id: 112, package: 'eslint-plugin-testing-library', ruleName: 'testing-library/no-node-access', description: 'Disallow direct access to DOM nodes in Testing Library.', enabled: false, level: 'warn' },
+    { id: 113, package: 'eslint-plugin-testing-library', ruleName: 'testing-library/no-wait-for-multiple-assertions', description: 'Disallow multiple assertions inside waitFor in Testing Library.', enabled: false, level: 'warn' },
+    { id: 114, package: 'eslint-plugin-testing-library', ruleName: 'testing-library/prefer-find-by', description: 'Prefer findBy queries over waitFor in Testing Library.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-regexp Rules
+    { id: 115, package: 'eslint-plugin-regexp', ruleName: 'regexp/no-dupe-disjunctions', description: 'Disallow duplicate disjunctions in RegExp.', enabled: false, level: 'warn' },
+    { id: 116, package: 'eslint-plugin-regexp', ruleName: 'regexp/no-empty-alternative', description: 'Disallow empty alternatives in RegExp.', enabled: false, level: 'error' },
+    { id: 117, package: 'eslint-plugin-regexp', ruleName: 'regexp/prefer-w', description: 'Prefer using \\w over character classes.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-typescript-sort-keys Rules
+    { id: 118, package: 'eslint-plugin-typescript-sort-keys', ruleName: 'typescript-sort-keys/interface', description: 'Enforce sorted keys in TypeScript interfaces.', enabled: false, level: 'warn' },
+    { id: 119, package: 'eslint-plugin-typescript-sort-keys', ruleName: 'typescript-sort-keys/string-enum', description: 'Enforce sorted keys in string enums.', enabled: false, level: 'warn' },
+    { id: 120, package: 'eslint-plugin-typescript-sort-keys', ruleName: 'typescript-sort-keys/type', description: 'Enforce sorted keys in TypeScript types.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-tailwindcss Rules
+    { id: 121, package: 'eslint-plugin-tailwindcss', ruleName: 'tailwindcss/no-custom-classname', description: 'Disallow custom class names that do not match Tailwind CSS conventions.', enabled: false, level: 'warn' },
+    { id: 122, package: 'eslint-plugin-tailwindcss', ruleName: 'tailwindcss/classnames-order', description: 'Enforce consistent order of Tailwind CSS class names.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-react-native Rules
+    { id: 123, package: 'eslint-plugin-react-native', ruleName: 'react-native/no-inline-styles', description: 'Disallow inline styles in React Native components.', enabled: false, level: 'warn' },
+    { id: 124, package: 'eslint-plugin-react-native', ruleName: 'react-native/split-platform-components', description: 'Enforce split platform components in React Native.', enabled: false, level: 'warn' },
+    { id: 125, package: 'eslint-plugin-react-native', ruleName: 'react-native/no-unused-styles', description: 'Disallow unused styles in React Native components.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-tsdoc Rules
+    { id: 126, package: 'eslint-plugin-tsdoc', ruleName: 'tsdoc/syntax', description: 'Enforce TSDoc syntax rules for TypeScript documentation comments.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-jsdoc Rules
+    { id: 127, package: 'eslint-plugin-jsdoc', ruleName: 'jsdoc/check-alignment', description: 'Ensure JSDoc comments are aligned correctly.', enabled: false, level: 'warn' },
+    { id: 128, package: 'eslint-plugin-jsdoc', ruleName: 'jsdoc/check-indentation', description: 'Ensure consistent indentation in JSDoc comments.', enabled: false, level: 'warn' },
+    { id: 129, package: 'eslint-plugin-jsdoc', ruleName: 'jsdoc/require-param', description: 'Require parameters to be documented in JSDoc comments.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-compatibility Rules
+    { id: 130, package: 'eslint-plugin-compatibility', ruleName: 'compatibility/no-incompatible-api', description: 'Disallow the use of APIs incompatible with specified environments.', enabled: false, level: 'error' },
+
+    // eslint-plugin-css-modules Rules
+    { id: 131, package: 'eslint-plugin-css-modules', ruleName: 'css-modules/no-undef-class', description: 'Disallow undefined class names in CSS Modules.', enabled: false, level: 'error' },
+    { id: 132, package: 'eslint-plugin-css-modules', ruleName: 'css-modules/no-unused-class', description: 'Disallow unused class names in CSS Modules.', enabled: false, level: 'warn' },
+
+    // eslint-plugin-html Rules
+    { id: 133, package: 'eslint-plugin-html', ruleName: 'html/no-self-closing', description: 'Disallow self-closing HTML tags where they are not supported.', enabled: false, level: 'warn' },
+    { id: 134, package: 'eslint-plugin-html', ruleName: 'html/no-multiple-empty-lines', description: 'Disallow multiple empty lines in HTML files.', enabled: false, level: 'warn' },
 ];
 
 export default eslintRules;
